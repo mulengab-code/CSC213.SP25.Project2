@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Complaint Viewer</title>
+</head>
+<body>
+<h2>Complaint ID: <span th:text="${complaint.complaintId}"></span></h2>
+<p><strong>Company:</strong> <span th:text="${complaint.company}"></span></p>
+<p><strong>Narrative:</strong></p>
+<p th:text="${complaint.narrative}"></p>
+
+<hr/>
+
+<h3>Top 3 Most Similar Complaints</h3>
+<ul>
+    <li th:each="similar : ${similarComplaints}">
+        <p><strong>ID:</strong> <span th:text="${similar.complaintId}"></span></p>
+        <p><strong>Company:</strong> <span th:text="${similar.company}"></span></p>
+        <p th:text="${similar.narrative}"></p>
+    </li>
+</ul>
+
+<hr/>
+<a th:href="@{|/complaint?index=${prevIndex}|}">⬅ Previous</a> |
+<a th:href="@{|/complaint?index=${nextIndex}|}">Next ➡</a>
+
+</body>
+</html>

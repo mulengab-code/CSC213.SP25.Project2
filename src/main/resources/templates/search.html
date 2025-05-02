@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Search Results</title>
+</head>
+<body>
+<h1>🔍 Search Complaints by Company</h1>
+
+<form method="get" action="/search">
+    <input type="text" name="company" placeholder="Enter company name..." th:value="${companySearch}" />
+    <button type="submit">Search</button>
+</form>
+
+<p th:if="${error != null}" th:text="${error}" style="color: red;"></p>
+
+<ul th:if="${searchResults != null}">
+    <li th:each="complaint : ${searchResults}">
+        <strong th:text="'Complaint ID: ' + ${complaint.complaintId}"></strong> —
+        <span th:text="${complaint.narrative}"></span>
+    </li>
+</ul>
+
+<a href="/complaint">Back to Viewer</a>
+</body>
+</html>
+
