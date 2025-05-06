@@ -20,9 +20,8 @@ public class ComplaintMerger {
             Complaint complaint = complaints.get(i);
             var complainEmbedding = embeddings.entrySet()
                     .stream().filter((e)-> e.getKey() == complaint.getComplaintId()).findFirst();
-            complaint.setEmbedding(complainEmbedding.get().getValue());
 
-            System.out.println("merger: "+complaint.getComplaintId()+" and "+complainEmbedding.get().getKey().toString());
+            complaint.setEmbedding(complainEmbedding.get().getValue());
         }
     }
 

@@ -69,7 +69,8 @@ public class ComplaintLoader {
                 }
                 i++;
             }
-            System.out.println("laodedcomplains: "+i);
+            InputStream jsonlStream = new FileInputStream(ResourceUtils.getFile("classpath:"+jsonlPath));
+            ComplaintMerger.mergeEmbeddings(loadedComplaints,EmbeddingLoader.loadEmbeddings(jsonlStream));
         }catch (IOException ex){
             ex.printStackTrace();
         }

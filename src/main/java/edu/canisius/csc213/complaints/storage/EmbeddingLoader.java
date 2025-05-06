@@ -38,9 +38,12 @@ public class EmbeddingLoader {
                 Map<String, Object> embeddingMap = new ObjectMapper().readValue(line, new TypeReference<Map<String, Object>>() {});
                 ///loadedEmbeddings.add(embeddingMap);
                 Long cId =Long.valueOf(embeddingMap.get("id").toString()).longValue();
-                List<Long> embs = (ArrayList)embeddingMap.get("embedding");
+                List<Double> embs = (ArrayList)embeddingMap.get("embedding");
 
                 double[] embeddingsDboule = new double[embs.size()];
+                for(int i=0;i<embs.size();i++){
+                    embeddingsDboule[i] = embs.get(i);
+                }
                 hashEmbedding.put(cId,embeddingsDboule);
                 j++;
             }
